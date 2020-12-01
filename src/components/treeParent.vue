@@ -100,7 +100,29 @@ export default {
         },
     },
     directives: { clickoutside },
+    mounted(){
+        this.defaultData(this.treeData)
+    },
     methods: {
+        // 查询默认值
+        defaultData(arr){
+            let _this = this
+            let item = null
+            try{
+                arr.forEach((val,key)=>{
+                    if(val.children && val.children.length> 0){
+                        _this.defaultData(val.children)
+                        throw '终止'
+                    }else{
+                        val.checked = true
+                        _this.change(val)
+                        throw '终止'
+                    }
+                })
+            }catch(e){
+                // console.log(e)
+            }
+        },
         handleClose(e) {
             this.showEdit = false
         },
