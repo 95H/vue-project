@@ -107,7 +107,6 @@ export default {
         // 查询默认值
         defaultData(arr){
             let _this = this
-            let item = null
             try{
                 arr.forEach((val,key)=>{
                     if(val.children && val.children.length> 0){
